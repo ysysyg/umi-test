@@ -9,7 +9,7 @@ export default class Step extends React.PureComponent {
     return (
       <div>
         {`step ${params.id}`}
-        <Link to={`/test/${Number(params.id) + 1}`}>Go to list page</Link>
+        <Link to={`/test/${Number(params.id) + 1}`}>Go to next test page</Link>
       </div>
     )
   }

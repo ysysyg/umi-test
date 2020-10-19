@@ -1,22 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import styles from './index.less';
 
 import { Button } from 'antd';
-import { connect } from 'umi';
+import { connect, history } from 'umi';
 
-const IndexPage = (props) => {
-  console.log('ks props ', props);
-
+const IndexPage = (props: any) => {
   useEffect(() => {
     props.dispatch({
       type: 'test/fetchBoxIndex'
     })
-  }, [])
+  }, []);
+
+  console.log('ks props ', props);
+
+  const gotoTestPage = useCallback(() => {
+    history.push('/test/1')
+  }, []);
 
   return (
     <div>
       <h1 className={styles.title}>Page index</h1>
-      <Button>antd</Button>
+      <Button onClick={gotoTestPage}>goto test page</Button>
       <p>{props.test.data}</p>
     </div>
   );

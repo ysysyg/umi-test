@@ -1,15 +1,7 @@
 import { extend } from "umi-request";
 import curry from 'lodash.curry';
 
-import { APIS, IS_DEV } from '@/constants/global';
-
-type Brand = 'CBN';
-
-const genPrefix = (brand: Brand, version: number) => {
-  const env = IS_DEV ? 'dev' : 'prod';
-  if (version === 0) return APIS[env][brand];
-  return `${APIS[env][brand]}/api/v${version}`
-}
+import genPrefix, { Brand } from './prefix';
 
 const request = (brand: Brand, version: number) => {
   const prefix = genPrefix(brand, version);
